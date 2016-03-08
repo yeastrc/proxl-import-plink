@@ -1,6 +1,6 @@
 package org.yeastrc.proxl.xml.plink.main;
 
-import org.yeastrc.proxl.xml.plink.reader.PLinkINI;
+import org.yeastrc.proxl.xml.plink.ini.ParsedINIFile;
 
 public class MainProgram {
 
@@ -9,7 +9,7 @@ public class MainProgram {
 	public static void main( String[] args ) throws Exception {
 		
 		
-		PLinkINI plinkINI = new PLinkINI( TEST_PLINK_INI );
+		ParsedINIFile plinkINI = new ParsedINIFile( TEST_PLINK_INI );
 		
 		
 		System.out.println( plinkINI.getConfig().getString( "pLink/mod.variable.2" ) );

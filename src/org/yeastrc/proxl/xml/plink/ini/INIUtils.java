@@ -1,4 +1,4 @@
-package org.yeastrc.proxl.xml.plink.reader;
+package org.yeastrc.proxl.xml.plink.ini;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +42,10 @@ public class INIUtils {
 		return config;
 	}
 	
+	/**
+	 * Get an expression engine that uses "/" to separate section names from key names
+	 * @return
+	 */
 	private static DefaultExpressionEngine getExpressionEngine() {
 		DefaultExpressionEngineSymbols symbols =
 			    new DefaultExpressionEngineSymbols.Builder(
