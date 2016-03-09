@@ -23,6 +23,12 @@ public class ParsedINIFile {
 		config.read( new FileReader( new File( filename ) ) );
 	}
 	
+	public ParsedINIFile( File file ) throws ConfigurationException, FileNotFoundException, IOException {
+		config = new INIConfiguration();
+		config.setExpressionEngine( INIUtils.EXPRESSION_ENGINE );
+		config.read( new FileReader( file ) );
+	}
+	
 	/**
 	 * Gets an objects where properties from the INI file may be referenced as:
 	 * "section_name/key_name" E.g., for:
