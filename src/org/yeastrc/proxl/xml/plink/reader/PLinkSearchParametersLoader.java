@@ -72,8 +72,6 @@ public class PLinkSearchParametersLoader {
 			throw new Exception( "Proxl does not currently support linker: " + plinkSearch.getLinker().getName() );
 		}
 		
-		
-		
 		return plinkSearch;
 	}
 	
