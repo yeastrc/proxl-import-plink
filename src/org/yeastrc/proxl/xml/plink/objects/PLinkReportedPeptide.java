@@ -1,6 +1,26 @@
 package org.yeastrc.proxl.xml.plink.objects;
 
+import org.yeastrc.proxl.xml.plink.reader.PLinkConstants;
+
 public class PLinkReportedPeptide {
+	
+	@Override
+	public String toString() {
+
+		if( this.getType() == PLinkConstants.LINK_TYPE_UNLINKED ) {
+			return this.getPeptide1().toString();
+		} else if( this.getType() == PLinkConstants.LINK_TYPE_MONOLINK ) {
+			return this.getPeptide1().toString() + "(" + this.getPosition1() + ")";
+		} else if( this.getType() == PLinkConstants.LINK_TYPE_LOOPLINK ) {
+			return this.getPeptide1().toString() + "(" + this.getPosition1() + "," + this.getPosition2() + ")";
+		} else if( this.getType() == PLinkConstants.LINK_TYPE_CROSSLINK ) {
+			return this.getPeptide1().toString() + "(" + this.getPosition1() + ")" + "-" +
+        		   this.getPeptide2().toString() + "(" + this.getPosition2() + ")";
+		}
+		
+		return "Error: unknown peptide type";
+		
+	}
 	
 	public PLinkPeptide getPeptide1() {
 		return peptide1;

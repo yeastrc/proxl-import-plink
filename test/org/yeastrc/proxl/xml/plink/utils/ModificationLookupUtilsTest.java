@@ -1,9 +1,10 @@
-package org.yeastrc.proxl.xml.plink.reader;
+package org.yeastrc.proxl.xml.plink.utils;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.yeastrc.proxl.xml.plink.objects.PLinkModification;
+import org.yeastrc.proxl.xml.plink.utils.ModificationLookupUtils;
 
 public class ModificationLookupUtilsTest {
 

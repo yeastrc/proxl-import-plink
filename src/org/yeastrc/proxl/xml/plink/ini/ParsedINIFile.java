@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import org.apache.commons.configuration2.INIConfiguration;
 import org.apache.commons.configuration2.ex.ConfigurationException;
+import org.yeastrc.proxl.xml.plink.utils.INIUtils;
 
 /**
  * Represents a parsed INI file

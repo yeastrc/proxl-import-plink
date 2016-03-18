@@ -1,4 +1,4 @@
-package org.yeastrc.proxl.xml.plink.reader;
+package org.yeastrc.proxl.xml.plink.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.yeastrc.proxl.xml.plink.objects.PLinkModification;
+import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 
 public class ModificationLookupUtils {
 

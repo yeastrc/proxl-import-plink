@@ -20,9 +20,17 @@ public class PLinkModification {
 	public void setAverageMass(double averageMass) {
 		this.averageMass = averageMass;
 	}
-	
+	public boolean isMonolink() {
+		return isMonolink;
+	}
+	public void setMonolink(boolean isMonolink) {
+		this.isMonolink = isMonolink;
+	}
+
+
+
 	private String name;
 	private double monoisotopicMass;
 	private double averageMass;
-	
+	private boolean isMonolink = false;
 }

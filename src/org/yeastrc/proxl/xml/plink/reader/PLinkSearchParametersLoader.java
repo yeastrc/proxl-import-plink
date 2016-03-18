@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.yeastrc.proxl.xml.plink.ini.ParsedINIFile;
 import org.yeastrc.proxl.xml.plink.objects.PLinkLinker;
+import org.yeastrc.proxl.xml.plink.utils.PLinkLinkerUtils;
 
 public class PLinkSearchParametersLoader {
 	

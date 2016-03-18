@@ -1,4 +1,4 @@
-package org.yeastrc.proxl.xml.plink.reader;
+package org.yeastrc.proxl.xml.plink.utils;
 
 import org.yeastrc.proxl.xml.plink.objects.PLinkLinker;
 

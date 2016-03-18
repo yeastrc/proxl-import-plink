@@ -1,4 +1,4 @@
-package org.yeastrc.proxl.xml.plink.ini;
+package org.yeastrc.proxl.xml.plink.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
