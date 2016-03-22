@@ -1,5 +1,7 @@
 package org.yeastrc.proxl.xml.plink.utils;
 
+import java.io.File;
+
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 
 public class PLinkUtils {
@@ -24,6 +26,11 @@ public class PLinkUtils {
 	
 	public static boolean getNoninterexport( PLinkSearchParameters params ) throws Exception {
 		return params.getPlinkINI().getConfig().getBoolean( "pLink/noninterexport" );
+	}
+	
+	public static String getFASTAFilename( PLinkSearchParameters params ) throws Exception {
+		File f = new File( params.getPlinkINI().getConfig().getString( "pLink/database.path" ) );
+		return f.getName();
 	}
 	
 }

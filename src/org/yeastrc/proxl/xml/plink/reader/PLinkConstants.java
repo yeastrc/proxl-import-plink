@@ -6,6 +6,10 @@ import java.util.Map;
 
 public class PLinkConstants {
 
+	public static final String SEARCH_PROGRAM_NAME = "pLink";
+	public static final String SEARCH_PROGRAM_VERSION = "Version Unknown";
+	
+	
 	public static final int LINK_TYPE_MONOLINK = 0;
 	public static final int LINK_TYPE_CROSSLINK = 1;
 	public static final int LINK_TYPE_LOOPLINK = 2;
