@@ -14,11 +14,11 @@ public class PLinkResult {
 	public void setCharge(int charge) {
 		this.charge = charge;
 	}
-	public PLinkReportedPeptide getReportedPEptide() {
-		return reportedPEptide;
+	public PLinkReportedPeptide getReportedPeptide() {
+		return reportedPeptide;
 	}
-	public void setReportedPEptide(PLinkReportedPeptide reportedPEptide) {
-		this.reportedPEptide = reportedPEptide;
+	public void setReportedPeptide(PLinkReportedPeptide reportedPEptide) {
+		this.reportedPeptide = reportedPEptide;
 	}
 	public double getEvalue() {
 		return evalue;
@@ -53,7 +53,7 @@ public class PLinkResult {
 	
 	private int scanNumber;
 	private int charge;
-	private PLinkReportedPeptide reportedPEptide;
+	private PLinkReportedPeptide reportedPeptide;
 	private double evalue;		// the score reported by plink
 	private double calculatedMass;
 	private double deltaMass;

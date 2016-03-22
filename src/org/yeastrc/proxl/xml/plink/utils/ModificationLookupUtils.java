@@ -135,6 +135,9 @@ public class ModificationLookupUtils {
 	public static Map<Integer, Collection<PLinkModification>> getModificationsFromModString( String plinkModString, PLinkSearchParameters params ) throws Exception {
 		Map<Integer, Collection<PLinkModification>> retMap = new HashMap<Integer, Collection<PLinkModification>>();
 		
+		if( plinkModString.equals( "null" ) )
+			return retMap;
+		
 		String[] modStrings = plinkModString.split( ";" );
 		if( modStrings.length < 1 ) {
 			throw new Exception( "Unexpected syntax of mod string: " + plinkModString );
