@@ -1,5 +1,12 @@
 package org.yeastrc.proxl.xml.plink.objects;
 
+/**
+ * A PSM result as parsed from the plink results file.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkResult {
 	
 	public int getScanNumber() {

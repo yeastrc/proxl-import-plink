@@ -1,5 +1,12 @@
 package org.yeastrc.proxl.xml.plink.utils;
 
+/**
+ * Some utility methods for parsing scan variables from the reported scan information in plink results files.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class ScanParsingUtils {
 
 	/**

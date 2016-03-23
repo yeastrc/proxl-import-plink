@@ -10,14 +10,10 @@ import org.yeastrc.proxl_import.api.xml_dto.FilterablePsmAnnotationType;
 
 public class PSMAnnotationTypes {
 
-	public static final String ANNOTATION_TYPE_SCORE = "score";
-	public static final String ANNOTATION_TYPE_MOVERZ = "m/z";
-	public static final String ANNOTATION_TYPE_OBSERVED_MASS = "obs. mass";
-	public static final String ANNOTATION_TYPE_CANDIDATE_MASS = "cand. mass";
-	public static final String ANNOTATION_TYPE_DEVIATION = "deviation";
-	public static final String ANNOTATION_TYPE_SCAN_NUMBER = "scan num.";
-	public static final String ANNOTATION_TYPE_RANK = "rank";
-	public static final String ANNOTATION_TYPE_FDR = "FDR";
+	public static final String ANNOTATION_TYPE_SCORE = "E-value";
+	public static final String ANNOTATION_TYPE_CALC_MASS = "Calculated Mass";
+	public static final String ANNOTATION_TYPE_DELTA_MASS = "Delta Mass";
+	public static final String ANNOTATION_TYPE_PPM = "Delta Mass (PPM)";	
 	
 	/**
 	 * Get the list of filterable PSM annotation types in StavroX data
@@ -29,30 +25,8 @@ public class PSMAnnotationTypes {
 		{
 			FilterablePsmAnnotationType type = new FilterablePsmAnnotationType();
 			type.setName( ANNOTATION_TYPE_SCORE );
-			type.setDescription( "StavroX Score" );
-			type.setDefaultFilterValue( new BigDecimal( "50" ) );
-			type.setDefaultFilter( false );
-			type.setFilterDirection( FilterDirectionType.ABOVE );
-			
-			types.add( type );
-		}
-
-		{
-			FilterablePsmAnnotationType type = new FilterablePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_FDR );
-			type.setDescription( "False discovery rate associated with this PSM's score" );
+			type.setDescription( "PLink Expect Value - Number of hits you can expect of this quality by chance." );
 			type.setDefaultFilterValue( new BigDecimal( "0.01" ) );
-			type.setDefaultFilter( true );
-			type.setFilterDirection( FilterDirectionType.BELOW );
-			
-			types.add( type );
-		}
-		
-		{
-			FilterablePsmAnnotationType type = new FilterablePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_RANK );
-			type.setDescription( "Rank of PSM for scan" );
-			type.setDefaultFilterValue( new BigDecimal( "1" ) );
 			type.setDefaultFilter( true );
 			type.setFilterDirection( FilterDirectionType.BELOW );
 			
@@ -71,15 +45,7 @@ public class PSMAnnotationTypes {
 		
 		{
 			DescriptivePsmAnnotationType type = new DescriptivePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_MOVERZ );
-			type.setDescription( type.getName() );
-			
-			types.add( type );
-		}
-		
-		{
-			DescriptivePsmAnnotationType type = new DescriptivePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_OBSERVED_MASS );
+			type.setName( ANNOTATION_TYPE_CALC_MASS );
 			type.setDescription( type.getName() );
 			
 			types.add( type );
@@ -87,7 +53,7 @@ public class PSMAnnotationTypes {
 
 		{
 			DescriptivePsmAnnotationType type = new DescriptivePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_CANDIDATE_MASS );
+			type.setName( ANNOTATION_TYPE_DELTA_MASS );
 			type.setDescription( type.getName() );
 			
 			types.add( type );
@@ -95,15 +61,7 @@ public class PSMAnnotationTypes {
 		
 		{
 			DescriptivePsmAnnotationType type = new DescriptivePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_DEVIATION );
-			type.setDescription( type.getName() );
-			
-			types.add( type );
-		}
-		
-		{
-			DescriptivePsmAnnotationType type = new DescriptivePsmAnnotationType();
-			type.setName( ANNOTATION_TYPE_SCAN_NUMBER );
+			type.setName( ANNOTATION_TYPE_PPM );
 			type.setDescription( type.getName() );
 			
 			types.add( type );

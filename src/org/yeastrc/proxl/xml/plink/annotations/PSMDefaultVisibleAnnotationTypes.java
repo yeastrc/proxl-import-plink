@@ -17,20 +17,6 @@ public class PSMDefaultVisibleAnnotationTypes {
 		
 		{
 			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_SCAN_NUMBER );
-			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
-			annotations.add( annotation );
-		}
-
-		{
-			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_RANK );
-			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
-			annotations.add( annotation );
-		}
-		
-		{
-			SearchAnnotation annotation = new SearchAnnotation();
 			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_SCORE );
 			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
 			annotations.add( annotation );
@@ -38,35 +24,14 @@ public class PSMDefaultVisibleAnnotationTypes {
 
 		{
 			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_FDR );
+			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_CALC_MASS );
 			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
 			annotations.add( annotation );
 		}
-		
+
 		{
 			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_MOVERZ );
-			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
-			annotations.add( annotation );
-		}
-		
-		{
-			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_OBSERVED_MASS );
-			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
-			annotations.add( annotation );
-		}
-		
-		{
-			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_CANDIDATE_MASS );
-			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
-			annotations.add( annotation );
-		}
-		
-		{
-			SearchAnnotation annotation = new SearchAnnotation();
-			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_DEVIATION );
+			annotation.setAnnotationName( PSMAnnotationTypes.ANNOTATION_TYPE_DELTA_MASS );
 			annotation.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
 			annotations.add( annotation );
 		}

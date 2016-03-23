@@ -1,5 +1,14 @@
 package org.yeastrc.proxl.xml.plink.objects;
 
+import java.util.Collection;
+
+/**
+ * Represents a plink modification as defined by the syntax in the modify.ini file
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkModification {
 	
 	public String getName() {
@@ -26,6 +35,12 @@ public class PLinkModification {
 	public void setMonolink(boolean isMonolink) {
 		this.isMonolink = isMonolink;
 	}
+	public Collection<String> getResidues() {
+		return residues;
+	}
+	public void setResidues(Collection<String> residues) {
+		this.residues = residues;
+	}
 
 
 
@@ -33,4 +48,5 @@ public class PLinkModification {
 	private double monoisotopicMass;
 	private double averageMass;
 	private boolean isMonolink = false;
+	private Collection<String> residues;
 }

@@ -1,46 +1,94 @@
 package org.yeastrc.proxl.xml.plink.main;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import jargs.gnu.CmdLineParser;
+import jargs.gnu.CmdLineParser.IllegalOptionValueException;
+import jargs.gnu.CmdLineParser.UnknownOptionException;
 
+import java.io.File;
+import java.util.Collection;
+
+import org.yeastrc.proxl.xml.plink.builder.XMLBuilder;
 import org.yeastrc.proxl.xml.plink.objects.PLinkResult;
-import org.yeastrc.proxl.xml.plink.reader.PLinkConstants;
 import org.yeastrc.proxl.xml.plink.reader.PLinkResultsLoader;
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParametersLoader;
-import org.yeastrc.proxl.xml.plink.utils.PLinkUtils;
 
+/**
+ * Run the program.
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class MainProgram {
 
-//	private static final String TEST_PLINK_INI = "C:\\Users\\Valued Customer\\Dropbox\\plink_output\\pLink.ini";
-	private static final String TEST_PLINK_INI = "F:\\Dropbox\\plink_output\\pLink.ini";
-	private static final String PLINK_BIN_DIRECTORY = "F:\\Dropbox\\pLink\\pLink_release";
-	private static final String PLINK_DATA_DIRECTORY = "F:\\Dropbox\\plink_output";
-
-	public static void main( String[] args ) throws Exception {
+	
+	public void convertSearch( String plinkINI, String plinkBinDirectory, String plinkDataDirectory, String outfile ) throws Exception {
 		
+		PLinkSearchParameters params = PLinkSearchParametersLoader.getInstance().getPLinkSearch( plinkINI, plinkBinDirectory );
+		Collection<PLinkResult> results = PLinkResultsLoader.getInstance().getAllResults( params, plinkDataDirectory );
 		
-		PLinkSearchParameters params = PLinkSearchParametersLoader.getInstance().getPLinkSearch( TEST_PLINK_INI, PLINK_BIN_DIRECTORY );
-		Collection<PLinkResult> results = PLinkResultsLoader.getInstance().getAllResults( params, PLINK_DATA_DIRECTORY );
-		
-		
-		
-		
-		/*
-		for( PLinkResult result : results ) {
-			if( result.getType() == PLinkConstants.LINK_TYPE_MONOLINK ) {
-				System.out.println( "Reported peptide:\t" + result.getReportedPeptide().toString() );
-				System.out.println( "E-value:\t" + result.getEvalue() );
-				System.out.println( "Scan number:\t" + result.getScanNumber() );
-				System.out.println( "Charge:\t" + result.getCharge() );
-				System.out.println( "Calculated mass:\t" + result.getCalculatedMass() );
-				System.out.println( "Delta mass:\t" + result.getDeltaMass() );
-				System.out.println( "Delta mass ppm:\t" + result.getDeltaMassPPM() );
-			}
-		}*/
-		
+		XMLBuilder builder = new XMLBuilder();
+		builder.buildAndSaveXML(params, results, new File( outfile ) );
 		
 	}
 	
+	public static void main( String[] args ) throws Exception {
+		
+		if( args.length < 1 || args[ 0 ].equals( "-h" ) ) {
+			printHelp();
+			System.exit( 0 );
+		}
+		
+		CmdLineParser cmdLineParser = new CmdLineParser();
+        
+		CmdLineParser.Option plinkINIOpt = cmdLineParser.addStringOption( 'i', "ini" );	
+		CmdLineParser.Option outfileOpt = cmdLineParser.addStringOption( 'o', "out" );	
+		CmdLineParser.Option binDirectoryOpt = cmdLineParser.addStringOption( 'b', "bin" );	
+		CmdLineParser.Option dataDirectoryOpt = cmdLineParser.addStringOption( 'd', "data" );
+
+        // parse command line options
+        try { cmdLineParser.parse(args); }
+        catch (IllegalOptionValueException e) {
+        	printHelp();
+            System.exit( 1 );
+        }
+        catch (UnknownOptionException e) {
+           printHelp();
+           System.exit( 1 );
+        }
+		
+        String iniFile = (String)cmdLineParser.getOptionValue( plinkINIOpt );
+        String outFile = (String)cmdLineParser.getOptionValue( outfileOpt );
+        String binDirectory = (String)cmdLineParser.getOptionValue( binDirectoryOpt );
+        String dataDirectory = (String)cmdLineParser.getOptionValue( dataDirectoryOpt );
+        
+        MainProgram mp = new MainProgram();
+        mp.convertSearch( iniFile, binDirectory, dataDirectory, outFile );
+        
+	}
+	
+	/**
+	 * Print helpt to STD OUT
+	 */
+	private static void printHelp() {
+		
+		System.out.println( "Description: Convert the results of a pLink analysis to a ProXL XML file suitable for import into ProXL." );
+		System.out.println( "             Designed to work only with single, label-free searches that used a single cross-linker.\n" );
+		
+		System.out.println( "Usage: java -jar plink2ProxlXML.jar -i path -o path [-b path ] [-d path]\n" );
+
+		System.out.println( "Example: java -jar plink2ProxlXML.jar -i c:\\plink_runs\\pLink.ini -o \"c:\\out put\\mySearch.proxl.xml\"" );
+		System.out.println( "         java -jar plink2ProxlXML.jar -i c:/plink_runs/search/pLink.ini -o c:/output/mySearch.proxl.xml");
+		System.out.println( "         java -jar plink2ProxlXML.jar -i /dir/pLink.ini -o /dir/mySearch.proxl.xml -b /dir/plink_install/release -d /dir/searches/search\n");
+		
+		System.out.println( "Options:" );
+		System.out.println( "\t-i\t[Required] Full path to pLink.ini file used in the search." );
+		System.out.println( "\t-o\t[Required] Full path to use for the outputfile (including file name)." );
+		System.out.println( "\t-b\t[Optional] Full path to the pLink binary directory, where modify.ini and xlink.ini may be found." );
+		System.out.println( "\t\t           If not present, value from pLink.ini is used." );
+		System.out.println( "\t-d\t[Optional] Full path to the data output directory for pLink results. This directory typically" );
+		System.out.println( "\t\t           contains 0.index, 1.sample, and 2.report directories." );
+		System.out.println( "\t\t           If not present, value from pLink.ini is used." );
+		
+	}
 }

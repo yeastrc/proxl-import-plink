@@ -13,6 +13,13 @@ import org.yeastrc.proxl.xml.plink.objects.PLinkReportedPeptide;
 import org.yeastrc.proxl.xml.plink.reader.PLinkConstants;
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 
+/**
+ * Some utility methods for working with reported peptides.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkReportedPeptideUtils {
 
 	/**

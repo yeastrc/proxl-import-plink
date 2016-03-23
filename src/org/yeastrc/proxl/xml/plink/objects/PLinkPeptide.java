@@ -10,6 +10,13 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 import org.yeastrc.proxl.xml.plink.utils.NumberUtils;
 
+/**
+ * A peptide as parsed from the reported peptide string in the plink results file. This is a single peptide,
+ * so a cross-linked pair of peptides will be presented by two of these.
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkPeptide {
 	
 	/**

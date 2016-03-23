@@ -9,6 +9,13 @@ import org.yeastrc.proxl.xml.plink.objects.PLinkResult;
 import org.yeastrc.proxl.xml.plink.utils.PLinkReportedPeptideUtils;
 import org.yeastrc.proxl.xml.plink.utils.ScanParsingUtils;
 
+/**
+ * Reads all results from a plink results file.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkResultsFileReader {
 
 	private PLinkResultsFileReader( File file, int type, PLinkSearchParameters params ) {

@@ -1,10 +1,29 @@
 package org.yeastrc.proxl.xml.plink.objects;
 
+import org.yeastrc.proxl.xml.plink.reader.PLinkConstants;
+
+/**
+ * Represents a pLink cross-linker, as defined by the syntax in modify.ini
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkLinker {
 	
 	public PLinkLinker() { }
 	
-	
+	/**
+	 * Get the name used by proxl to identify the cross-linker used in this experiment
+	 * @return
+	 * @throws Exception
+	 */
+	public String getProxlName() throws Exception {
+		if( !PLinkConstants.LINKER_MAP_PLINK2PROXL.containsKey( this.getName() ) )
+			throw new Exception( "Can not map " + this.getName() + " to a ProXL linker." );
+		
+		return PLinkConstants.LINKER_MAP_PLINK2PROXL.get( this.getName() );
+	}
 	
 	public String getName() {
 		return name;

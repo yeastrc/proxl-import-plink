@@ -4,6 +4,13 @@ import java.io.File;
 
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 
+/**
+ * Some utility methods for querying specific parameters from the INI files.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkUtils {
 
 	public static String getOutputDirectory( PLinkSearchParameters params ) throws Exception {

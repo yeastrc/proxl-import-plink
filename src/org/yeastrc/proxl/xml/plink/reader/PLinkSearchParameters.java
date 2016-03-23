@@ -3,6 +3,13 @@ package org.yeastrc.proxl.xml.plink.reader;
 import org.yeastrc.proxl.xml.plink.ini.ParsedINIFile;
 import org.yeastrc.proxl.xml.plink.objects.PLinkLinker;
 
+/**
+ * Access to the various INI files that define the search parameters of a plink search.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkSearchParameters {
 	
 	public ParsedINIFile getPlinkINI() {

@@ -2,8 +2,38 @@ package org.yeastrc.proxl.xml.plink.objects;
 
 import org.yeastrc.proxl.xml.plink.reader.PLinkConstants;
 
+/**
+ * Represents a "reported peptide" as reported by the plink results files. A reported peptide is
+ * the unique combination of peptide sequence(s), modifications, and linked positions. Contains
+ * the parsed peptide(s), linked positions in those peptides, and all mods on each peptide.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkReportedPeptide {
 	
+	@Override
+	public boolean equals( Object o ) {
+		
+		if( !( o instanceof PLinkReportedPeptide) )
+			return false;
+		
+		return this.toString().equals( ((PLinkReportedPeptide)o).toString() );
+	}
+	
+	@Override
+	public int hashCode() {
+		return this.toString().hashCode();
+	}
+	
+	/**
+	 * A string representation of this reported peptide in the format of:
+	 * PEP[12.321]TIDE (for unlinked peptides)
+	 * PEP[156.2340]TIDE (for monolinked peptides--proxl treats monolinks as dynamic mods)
+	 * PEP[12.2123]TIDE(1,3) (for looplinked peptides)
+	 * PEP[12.2123]TIDE(1)-PEPTIDE (for crosslinked peptides)
+	 */
 	@Override
 	public String toString() {
 

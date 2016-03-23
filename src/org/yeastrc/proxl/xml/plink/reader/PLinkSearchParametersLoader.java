@@ -8,12 +8,27 @@ import org.yeastrc.proxl.xml.plink.ini.ParsedINIFile;
 import org.yeastrc.proxl.xml.plink.objects.PLinkLinker;
 import org.yeastrc.proxl.xml.plink.utils.PLinkLinkerUtils;
 
+/**
+ * Load the plink search parameters.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkSearchParametersLoader {
 	
 	public static PLinkSearchParametersLoader getInstance() { return _INSTANCE; }
 	private static final PLinkSearchParametersLoader _INSTANCE = new PLinkSearchParametersLoader();
 	private PLinkSearchParametersLoader() { }
 	
+	/**
+	 * Load the plink search parameters. Also parses, verifies, and populates the linker used in this experiment.
+	 * 
+	 * @param pLinkINIFilename The full path to the pLink.ini file used in the experiment.
+	 * @param pLinkBinDirectory (Optional) The full path the the bin directory for plink. If absent, value from the pLink.ini file is used.
+	 * @return
+	 * @throws Exception
+	 */
 	public PLinkSearchParameters getPLinkSearch( String pLinkINIFilename, String pLinkBinDirectory ) throws Exception {
 
 		PLinkSearchParameters plinkSearch = new PLinkSearchParameters();

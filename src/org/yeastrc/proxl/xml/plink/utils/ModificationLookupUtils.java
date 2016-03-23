@@ -3,6 +3,7 @@ package org.yeastrc.proxl.xml.plink.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,6 +11,13 @@ import java.util.regex.Pattern;
 import org.yeastrc.proxl.xml.plink.objects.PLinkModification;
 import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 
+/**
+ * Some utility methods for working with modifications.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class ModificationLookupUtils {
 
 	private static Map<String, PLinkModification> modCache = new HashMap<String, PLinkModification>();
@@ -74,6 +82,11 @@ public class ModificationLookupUtils {
 		
 		String[] fields = definition.split( " " );
 		
+		Collection<String> residues = new HashSet<String>();
+		for (int i = 0; i < fields[ 0 ].length(); i++){
+		    residues.add( String.valueOf( fields[ 0 ].charAt( i ) ) );
+		}
+		
 		double monoMass = Double.parseDouble( fields[ 2 ] );
 		double avgMass = Double.parseDouble( fields[ 3 ] );
 		
@@ -81,6 +94,7 @@ public class ModificationLookupUtils {
 		mod.setName( name );
 		mod.setMonoisotopicMass( monoMass );
 		mod.setAverageMass( avgMass );
+		mod.setResidues( residues );
 		
 		return mod;
 	}

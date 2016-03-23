@@ -2,6 +2,13 @@ package org.yeastrc.proxl.xml.plink.utils;
 
 import org.yeastrc.proxl.xml.plink.objects.PLinkLinker;
 
+/**
+ * Some utility methods for working with linkers.
+ * 
+ * @author Michael Riffle
+ * @date Mar 23, 2016
+ *
+ */
 public class PLinkLinkerUtils {
 
 	/**
