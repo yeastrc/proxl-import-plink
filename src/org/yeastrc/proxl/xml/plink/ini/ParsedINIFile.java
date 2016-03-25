@@ -19,17 +19,30 @@ import org.yeastrc.proxl.xml.plink.utils.INIUtils;
 public class ParsedINIFile {
 
 	public ParsedINIFile( String filename ) throws ConfigurationException, FileNotFoundException, IOException {
+
+		this.filename = filename;
+		
 		config = new INIConfiguration();
 		config.setExpressionEngine( INIUtils.EXPRESSION_ENGINE );
 		config.read( new FileReader( new File( filename ) ) );
 	}
 	
 	public ParsedINIFile( File file ) throws ConfigurationException, FileNotFoundException, IOException {
+		
+		this.filename = file.getAbsolutePath();
+		
 		config = new INIConfiguration();
 		config.setExpressionEngine( INIUtils.EXPRESSION_ENGINE );
 		config.read( new FileReader( file ) );
 	}
 	
+	
+	
+	
+	public String getFilename() {
+		return filename;
+	}
+
 	/**
 	 * Gets an objects where properties from the INI file may be referenced as:
 	 * "section_name/key_name" E.g., for:
@@ -49,4 +62,5 @@ public class ParsedINIFile {
 
 
 	private INIConfiguration config;
+	private String filename;
 }

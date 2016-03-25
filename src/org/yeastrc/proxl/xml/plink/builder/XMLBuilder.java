@@ -2,6 +2,9 @@ package org.yeastrc.proxl.xml.plink.builder;
 
 import java.io.File;
 import java.math.BigInteger;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,6 +20,8 @@ import org.yeastrc.proxl.xml.plink.reader.PLinkSearchParameters;
 import org.yeastrc.proxl.xml.plink.utils.ModificationLookupUtils;
 import org.yeastrc.proxl.xml.plink.utils.NumberUtils;
 import org.yeastrc.proxl.xml.plink.utils.PLinkUtils;
+import org.yeastrc.proxl_import.api.xml_dto.ConfigurationFile;
+import org.yeastrc.proxl_import.api.xml_dto.ConfigurationFiles;
 import org.yeastrc.proxl_import.api.xml_dto.CrosslinkMass;
 import org.yeastrc.proxl_import.api.xml_dto.CrosslinkMasses;
 import org.yeastrc.proxl_import.api.xml_dto.DecoyLabel;
@@ -384,6 +389,16 @@ public class XMLBuilder {
 			
 		}// end iterating over distinct reported peptides
 
+		
+		// add in the config file(s)
+		ConfigurationFiles xmlConfigurationFiles = new ConfigurationFiles();
+		proxlInputRoot.setConfigurationFiles( xmlConfigurationFiles );
+		
+		ConfigurationFile xmlConfigurationFile = new ConfigurationFile();
+		xmlConfigurationFile.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
+		xmlConfigurationFile.setFileName( ( new File( params.getPlinkINI().getFilename() ) ).getName() );
+		xmlConfigurationFile.setFileContent( Files.readAllBytes( FileSystems.getDefault().getPath( params.getPlinkINI().getFilename() ) ) );
+		
 		
 		//make the xml file
 		CreateImportFileFromJavaObjectsMain.getInstance().createImportFileFromJavaObjectsMain(outfile, proxlInputRoot);
