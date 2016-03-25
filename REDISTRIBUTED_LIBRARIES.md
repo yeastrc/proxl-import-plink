@@ -19,6 +19,11 @@ Apache Commons Lang
 https://commons.apache.org/proper/commons-lang/
 [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 
+Apache Commons Logging
+------------------------------
+https://commons.apache.org/proper/commons-logging/
+[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
+
 JArgs
 ------------------------------
 https://github.com/purcell/jargs/
