@@ -395,6 +395,8 @@ public class XMLBuilder {
 		proxlInputRoot.setConfigurationFiles( xmlConfigurationFiles );
 		
 		ConfigurationFile xmlConfigurationFile = new ConfigurationFile();
+		xmlConfigurationFiles.getConfigurationFile().add( xmlConfigurationFile );
+		
 		xmlConfigurationFile.setSearchProgram( PLinkConstants.SEARCH_PROGRAM_NAME );
 		xmlConfigurationFile.setFileName( ( new File( params.getPlinkINI().getFilename() ) ).getName() );
 		xmlConfigurationFile.setFileContent( Files.readAllBytes( FileSystems.getDefault().getPath( params.getPlinkINI().getFilename() ) ) );
