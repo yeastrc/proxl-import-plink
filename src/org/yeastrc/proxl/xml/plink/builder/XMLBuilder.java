@@ -4,10 +4,10 @@ import java.io.File;
 import java.math.BigInteger;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.yeastrc.proxl.xml.plink.annotations.PSMAnnotationTypes;
@@ -73,11 +73,15 @@ public class XMLBuilder {
 	 * @param outfile The file to which the XML will be written
 	 * @throws Exception
 	 */
-	public void buildAndSaveXML( PLinkSearchParameters params, Collection<PLinkResult> results, File outfile ) throws Exception {
+	public void buildAndSaveXML( PLinkSearchParameters params, Collection<PLinkResult> results, File outfile, String fastaFilePath ) throws Exception {
 
 		ProxlInput proxlInputRoot = new ProxlInput();
 
-		proxlInputRoot.setFastaFilename( PLinkUtils.getFASTAFilename( params ) );
+		proxlInputRoot.setFastaFilename( ( new File( PLinkUtils.getFASTAPath( params ) ) ).getName() );
+		
+		// if they didn't specify a fasta file on the command line, use the one in the INI file
+		if( fastaFilePath == null )
+			fastaFilePath = PLinkUtils.getFASTAPath( params );
 		
 		SearchProgramInfo searchProgramInfo = new SearchProgramInfo();
 		proxlInputRoot.setSearchProgramInfo( searchProgramInfo );
@@ -160,21 +164,21 @@ public class XMLBuilder {
 		//
 		// Add decoy labels (optional)
 		//
+		
+		Collection<String> decoyLabels = new HashSet<>();
+		decoyLabels.add( "random" );
+		decoyLabels.add( "decoy" );
+		decoyLabels.add( "reverse" );
+		decoyLabels.add( "shuffle" );
+		
 		DecoyLabels xmlDecoyLabels = new DecoyLabels();
 		proxlInputRoot.setDecoyLabels( xmlDecoyLabels );
 		
-		{
+		for( String decoyLabel : decoyLabels ) {
 			DecoyLabel xmlDecoyLabel = new DecoyLabel();
 			xmlDecoyLabels.getDecoyLabel().add( xmlDecoyLabel );
 			
-			xmlDecoyLabel.setPrefix( "random" );
-		}
-		
-		{
-			DecoyLabel xmlDecoyLabel = new DecoyLabel();
-			xmlDecoyLabels.getDecoyLabel().add( xmlDecoyLabel );
-			
-			xmlDecoyLabel.setPrefix( "decoy" );
+			xmlDecoyLabel.setPrefix( decoyLabel );
 		}
 		
 		
@@ -389,6 +393,11 @@ public class XMLBuilder {
 			
 		}// end iterating over distinct reported peptides
 
+		
+		
+		// add in the matched proteins section
+		MatchedProteinsBuilder.getInstance().buildMatchedProteins( proxlInputRoot, new File( fastaFilePath ), decoyLabels );
+		
 		
 		// add in the config file(s)
 		ConfigurationFiles xmlConfigurationFiles = new ConfigurationFiles();
