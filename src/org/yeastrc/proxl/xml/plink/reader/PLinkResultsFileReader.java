@@ -84,24 +84,34 @@ public class PLinkResultsFileReader {
 		*/
 		
 		PLinkResult result = new PLinkResult();
-		result.setType( type );
-		
-		String[] fields = line1.split( "\\t" );
-		result.setScanNumber( ScanParsingUtils.getScanNumberFromReportedScan( fields[ 1 ] ) );
-		result.setCharge( ScanParsingUtils.getChargeFromReportedScan( fields[ 1 ] ) );
-		
-		fields = line2.split( "\\t" );
-		
-		String rp = fields[ 2 ];
-		String mods = fields[ 4 ];
-		
-		PLinkReportedPeptide reportedPeptide = PLinkReportedPeptideUtils.getReportedPeptide( rp, mods, type, params);
-		result.setReportedPeptide( reportedPeptide );
-		
-		result.setCalculatedMass( Double.parseDouble( fields[ 6 ] ) );
-		result.setDeltaMass( Double.parseDouble( fields[ 7 ] ) );
-		result.setDeltaMassPPM( Double.parseDouble( fields[ 8 ] ) );
-		result.setEvalue( Double.parseDouble( fields[ 5 ] ) );
+
+		try {
+			result.setType( type );
+			
+			String[] fields = line1.split( "\\t" );
+			result.setScanNumber( ScanParsingUtils.getScanNumberFromReportedScan( fields[ 1 ] ) );
+			result.setCharge( ScanParsingUtils.getChargeFromReportedScan( fields[ 1 ] ) );
+			
+			fields = line2.split( "\\t" );
+			
+			String rp = fields[ 2 ];
+			String mods = fields[ 4 ];
+			
+			PLinkReportedPeptide reportedPeptide = PLinkReportedPeptideUtils.getReportedPeptide( rp, mods, type, params);
+			result.setReportedPeptide( reportedPeptide );
+			
+			result.setCalculatedMass( Double.parseDouble( fields[ 6 ] ) );
+			result.setDeltaMass( Double.parseDouble( fields[ 7 ] ) );
+			result.setDeltaMassPPM( Double.parseDouble( fields[ 8 ] ) );
+			result.setEvalue( Double.parseDouble( fields[ 5 ] ) );
+		} catch (Exception e) {
+
+			System.err.println( "Got error processing pLink result:" );
+			System.err.println( "\tLine 1: " + line1 );
+			System.err.println( "\tLine 2: " + line2 );
+			
+			throw e;
+		}
 		
 		return result;
 	}
