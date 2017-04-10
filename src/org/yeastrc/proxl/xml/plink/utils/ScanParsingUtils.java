@@ -1,5 +1,8 @@
 package org.yeastrc.proxl.xml.plink.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Some utility methods for parsing scan variables from the reported scan information in plink results files.
  * 
@@ -17,12 +20,22 @@ public class ScanParsingUtils {
 	 * @throws Exception
 	 */
 	public static int getChargeFromReportedScan( String reportedScan ) throws Exception {
-		String[] fields = reportedScan.split( "\\." );
 		
-		if( fields.length < 4 )
-			throw new Exception( "Got unexpected syntax for reported scan string: " + reportedScan );
+		Pattern r = Pattern.compile( "^.+\\.\\d+\\.\\d+\\.(\\d+)$" );
 		
-		return Integer.parseInt( fields[ fields.length - 1 ] );
+		// first split on spaces, then check each element's syntax for expected syntax above
+		String[] elements = reportedScan.split( " " );
+		
+		for( String element : elements ) {
+			
+			Matcher m = r.matcher( element );
+			if( m.matches() ) {
+			
+				return Integer.parseInt( m.group( 1 ) );
+			}
+		}
+		
+		throw new Exception( "Could not find expected syntax for reporting scan information. Got: " + reportedScan );
 	}
 	
 	/**
@@ -35,12 +48,22 @@ public class ScanParsingUtils {
 	 * @throws Exception
 	 */
 	public static int getScanNumberFromReportedScan( String reportedScan ) throws Exception {
-		String[] fields = reportedScan.split( "\\." );
 		
-		if( fields.length < 4 )
-			throw new Exception( "Got unexpected syntax for reported scan string: " + reportedScan );
+		Pattern r = Pattern.compile( "^.+\\.\\d+\\.(\\d+)\\.\\d+$" );
+
+		// first split on spaces, then check each element's syntax for expected syntax above
+		String[] elements = reportedScan.split( " " );
 		
-		return Integer.parseInt( fields[ fields.length - 2 ] );
+		for( String element : elements ) {
+			
+			Matcher m = r.matcher( element );
+			if( m.matches() ) {
+			
+				return Integer.parseInt( m.group( 1 ) );
+			}
+		}
+		
+		throw new Exception( "Could not find expected syntax for reporting scan information. Got: " + reportedScan );
 	}
 	
 }
