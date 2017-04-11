@@ -12,6 +12,8 @@ import java.util.regex.Pattern;
  */
 public class ScanParsingUtils {
 
+	private static final Pattern r = Pattern.compile( "^.+\\.\\d+\\.(\\d+)\\.(\\d+)$" );
+	
 	/**
 	 * Get the charge from the reported scan. E.g.: Q_2013_1010_RJ_07.14315.14315.4
 	 * Would return 4
@@ -20,9 +22,7 @@ public class ScanParsingUtils {
 	 * @throws Exception
 	 */
 	public static int getChargeFromReportedScan( String reportedScan ) throws Exception {
-		
-		Pattern r = Pattern.compile( "^.+\\.\\d+\\.\\d+\\.(\\d+)$" );
-		
+				
 		// first split on spaces, then check each element's syntax for expected syntax above
 		String[] elements = reportedScan.split( " " );
 		
@@ -31,7 +31,7 @@ public class ScanParsingUtils {
 			Matcher m = r.matcher( element );
 			if( m.matches() ) {
 			
-				return Integer.parseInt( m.group( 1 ) );
+				return Integer.parseInt( m.group( 2 ) );
 			}
 		}
 		
@@ -49,8 +49,6 @@ public class ScanParsingUtils {
 	 */
 	public static int getScanNumberFromReportedScan( String reportedScan ) throws Exception {
 		
-		Pattern r = Pattern.compile( "^.+\\.\\d+\\.(\\d+)\\.\\d+$" );
-
 		// first split on spaces, then check each element's syntax for expected syntax above
 		String[] elements = reportedScan.split( " " );
 		
