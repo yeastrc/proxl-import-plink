@@ -11,4 +11,8 @@ How To Run
 
 In the above example, ``output.proxl.xml`` will be created and be suitable for import into ProXL.
 
-For more information on importing data into ProXL, please see the [ProXL Import Documentation](http://proxl-web-app.readthedocs.org/en/latest/install/import.html).
+For more information on importing data into Proxl, please see the [Proxl Import Documentation](http://proxl-web-app.readthedocs.io/en/latest/using/upload_data.html).
+
+More Information About Proxl
+-----------------------------
+For more information about Proxl, visit http://proxl-ms.org/.
