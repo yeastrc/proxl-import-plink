@@ -34,10 +34,13 @@ public class PLinkConstants {
 	static {
         Map<String, String> tempLinkerMap = new HashMap<String, String>();
         
+        tempLinkerMap.put( "BS3_STY", "bs3.sty" );
         tempLinkerMap.put( "BS3", "bs3" );
+        tempLinkerMap.put( "DSS_STY",  "dss.sty" );
         tempLinkerMap.put( "DSS",  "dss" );
         tempLinkerMap.put( "EDC-D",  "edc" );
         tempLinkerMap.put( "EDC-E",  "edc" );
+        tempLinkerMap.put( "EDC",  "edc" );
         tempLinkerMap.put( "BS2G",  "bs2" );
         
         LINKER_MAP_PLINK2PROXL = Collections.unmodifiableMap(tempLinkerMap);
@@ -54,9 +57,5 @@ public class PLinkConstants {
         PLINK_NAME_FOR_TYPE = Collections.unmodifiableMap( tempLinkTypeMap );
 	}
 	
-	
-	
-	
-
 	
 }
