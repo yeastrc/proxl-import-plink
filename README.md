@@ -1,7 +1,7 @@
-pLink to ProXL XML Converter
+pLink 1.x to ProXL XML Converter
 =============================
 
-Use this program to convert the results of a pLink cross-linking analysis to Proxl XML suitable for import into the proxl web application.
+Use this program to convert the results of a pLink 1.x cross-linking analysis to Proxl XML suitable for import into the proxl web application.
 
 How To Run
 -------------
