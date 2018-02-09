@@ -74,14 +74,14 @@ public class MainProgram {
 	 */
 	private static void printHelp() {
 		
-		System.out.println( "Description: Convert the results of a pLink analysis to a ProXL XML file suitable for import into ProXL." );
+		System.out.println( "Description: Convert the results of a pLink 1.x analysis to a ProXL XML file suitable for import into ProXL." );
 		System.out.println( "             Designed to work only with single, label-free searches that used a single cross-linker.\n" );
 		
-		System.out.println( "Usage: java -jar plink2ProxlXML.jar -i path -o path [-b path ] [-d path]\n" );
+		System.out.println( "Usage: java -jar plink1toProxlXML.jar -i path -o path [-b path ] [-d path]\n" );
 
-		System.out.println( "Example: java -jar plink2ProxlXML.jar -i c:\\plink_runs\\pLink.ini -o \"c:\\out put\\mySearch.proxl.xml\"" );
-		System.out.println( "         java -jar plink2ProxlXML.jar -i c:/plink_runs/search/pLink.ini -o c:/output/mySearch.proxl.xml");
-		System.out.println( "         java -jar plink2ProxlXML.jar -i /dir/pLink.ini -o /dir/mySearch.proxl.xml -b /dir/plink_install/release -d /dir/searches/search\n");
+		System.out.println( "Example: java -jar plink1toProxlXML.jar -i c:\\plink_runs\\pLink.ini -o \"c:\\out put\\mySearch.proxl.xml\"" );
+		System.out.println( "         java -jar plink1toProxlXML.jar -i c:/plink_runs/search/pLink.ini -o c:/output/mySearch.proxl.xml");
+		System.out.println( "         java -jar plink1toProxlXML.jar -i /dir/pLink.ini -o /dir/mySearch.proxl.xml -b /dir/plink_install/release -d /dir/searches/search\n");
 		
 		System.out.println( "Options:" );
 		System.out.println( "\t-i\t[Required] Full path to pLink.ini file used in the search." );
