@@ -3,7 +3,7 @@ pLink 1.x to ProXL XML Converter
 
 Use this program to convert the results of a pLink 1.x cross-linking analysis to Proxl XML suitable for import into the proxl web application.
 
-Note: If you are using pLink 2.x, please go to [latest release](https://github.com/yeastrc/proxl-import-plink2)
+Note: If you are using pLink 2.x, please go to [pLink 2.x converter](https://github.com/yeastrc/proxl-import-plink2)
 
 How To Run
 -------------
